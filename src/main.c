@@ -17,41 +17,6 @@ void loadCodes() {
 	directWrite32(ShowExceptions, 0);
 	directWrite16(ExcDispInfo, (u16)(EXCEPTION_INFO_DEFAULT | EXCEPTION_INFO_GPR));
 
-	// Wiimmfi Code Patches (by Leseratte)
-	directWriteNop(WiimmfiPatch1);
-	directWrite32(WiimmfiPatch2, 0x3BC00000);
-	directWriteBranch(WiimmfiPatch3, WiimmfiASM1, false);
-	directWriteBranch(WiimmfiPatch4, WiimmfiASM2, false);
-
-	// Wiimmfi Domain Name Patches (by Seeky)
-	directWriteString(WiimmfiVersionString, "LE-CODE GCT v1 ");
-	directWriteString(NaswiiURL, "://ca.nas.wiimmfi.de/ca");
-	directWriteString(NaswiiURL2, "://naswii.wiimmfi.de/ac");
-	directWriteString(NaswiiURL3, "://naswii.wiimmfi.de/pr");
-
-	#ifdef REGION_P
-	directWriteString(NaswiiURL4, "://main.nas.wiimmfi.de/pp");
-	#elif REGION_E
-	directWriteString(NaswiiURL4, "://main.nas.wiimmfi.de/pe");
-	#elif REGION_J
-	directWriteString(NaswiiURL4, "://main.nas.wiimmfi.de/pj");
-	#elif REGION_K
-	directWriteString(NaswiiURL4, "://main.nas.wiimmfi.de/pk");
-	#endif
-
-	directWriteString(AvailableURL, "wiimmfi.de");
-	directWriteString(GPCMURL, "wiimmfi.de");
-	directWriteString(GPSPURL, "wiimmfi.de");
-	directWriteString(MasterURL, "wiimmfi.de");
-	directWriteString(NatnegURL, "wiimmfi.de");
-	directWriteString(NatnegURL2, "wiimmfi.de");
-	directWriteString(NatnegURL3, "wiimmfi.de");
-	directWriteString(MSURL, "wiimmfi.de");
-	directWriteString(GSURL, "wiimmfi.de");
-
-	// Wiimmfi Login Region Changer (by Atlas)
-	directWriteString(LoginRegion, "120053");
-
 	// Always Win Track Vote (by Star, modified by Seeky & CLF78)
 	directWriteBranch(AlwaysWinVoteHook, VotePatch, true);
 
