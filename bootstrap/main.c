@@ -48,9 +48,6 @@ void start() {
 	// Wipe area at 0x80001800-0x80003000
 	memset((void*)0x80001800, 0, 0x1800);
 
-	// Disable Dolphin's codehandler
-	_directWriteBlr((void*)0x800018A8);
-	#endif
 
 	// Main Hook
 	directWriteBranchEx(RelHook, readPayload, false);
